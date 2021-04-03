@@ -14,7 +14,7 @@ public class Calculator {
                 arg = Math.round(arg);
             }
             if (arg < 0) {
-                throw new IllegalArgumentException("Číslo pred faktoriálom nemôže byť menšie ako 0");
+                throw new IllegalArgumentException("The operand of the factorial can not be less than zero");
             }
             double result = 1;
             for (int i = 1; i <= arg; i++) {
@@ -48,31 +48,31 @@ public class Calculator {
         double precision = 0.00001;
         int cycles = 0;
  
-        System.out.println("Zadajte funkciu: f(x) = ");
+        System.out.println("Input function: f(x) = ");
         function = sc.nextLine();
  
-        System.out.print("Dolná hranica: ");
+        System.out.print("Lower bound of Interval: ");
         if (sc.hasNextDouble()) {
             intervalStart = sc.nextDouble();
         } else {
-            System.out.println("Nesprávny vstup");
+            System.out.println("Input error");
         }
  
-        System.out.print("Horná hranica: ");
+        System.out.print("Upper bound of Interval: ");
         if (sc.hasNextDouble()) {
             intervalEnd = sc.nextDouble();
         } else {
-            System.out.println("Nesprávny vstup");
+            System.out.println("Input error");
         }
  
-        System.out.println("Počet opakovaní alebo PRESS ANY BUTTON: ");
+        System.out.println("Number of repeats PRESS ANY BUTTON: ");
         if (sc.hasNextInt()) {
             repeats = sc.nextInt();
         }
  
         sc.close();
  
-        System.out.println("Skúšam čo to dá...");
+        System.out.println("I'm trying ...");
         boolean found = false;
         while (Math.abs(intervalStart - intervalEnd) > precision || cycles < repeats) {
             middle = (intervalStart + intervalEnd) / 2.0;
@@ -80,14 +80,14 @@ public class Calculator {
             try {
                 double evaluated = Function(middle);
                 if (evaluated == 0) {
-                    System.out.println("Koreň je: " + middle);
-                    System.out.println("Počet delení: " + cycles);
+                    System.out.println("The root is: " + middle);
+                    System.out.println("Number of divisions: " + cycles);
                     found = true;
                     break;
                 }
                 if (evaluated <= precision && evaluated >= -precision) {
-                    System.out.println("Približný koreň je : " + middle);
-                    System.out.println("Počet delení: " + cycles);
+                    System.out.println("Aproximate root is: " + middle);
+                    System.out.println("Number of divisions: " + cycles);
                     found = true;
                     break;
                 } else {
@@ -104,7 +104,7 @@ public class Calculator {
  
         }
         if (found == false) {
-            System.out.println("Požadovaný koreň sa nenašiel, skúste iný interval");
+            System.out.println("The root was not found, try different interval");
         }
  
     }
